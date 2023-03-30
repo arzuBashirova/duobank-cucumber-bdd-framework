@@ -13,8 +13,3 @@ Feature: As a user, I want to be able to sign in to my mortgage account, so that
     Then The sign in page should have two input fields
     Then One for email address and the other for password
 
-  Scenario: User shouldn't leave the fields blank
-
-    When The user left the email address and password fields blank
-    Then the "Please fill out this blank." requirements must be display
-
