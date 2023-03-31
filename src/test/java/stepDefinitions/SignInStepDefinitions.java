@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import pages.SignInPage;
 import utils.ConfigReader;
 import utils.Driver;
@@ -13,6 +14,7 @@ public class SignInStepDefinitions {
 
     @Given("The user is on the Sign in page")
     public void i_am_on_sign_in_page() {
+
 
     }
     @When("The user navigates to the sign in page")
@@ -87,13 +89,13 @@ public class SignInStepDefinitions {
     }
     @Then("the user should see an error message for email")
     public void the_user_should_see_an_error_message_for_email() throws InterruptedException {
+        String errorMessage=new SignInPage().getEmail().getAttribute("validationMessage");
+        Assert.assertEquals(errorMessage,Driver.getDriver().findElement(By.name("email")).getAttribute("validationMessage"));
+        System.out.println(errorMessage);
 
-//        Thread.sleep(1000);
-//        //Assert.assertEquals("Please include an '@' ");
-//        Assert.assertTrue(new SignInPage().getErrorMessage().contains("Please include an '@' "));
-//        new SignInPage().clickOnSignInButton();
-//        Assert.assertFalse(new SignInPage().errorExists(), "Verify no errors exist");
+
     }
+
     @Then("the sign-up process should not proceed")
     public void the_sign_up_process_should_not_proceed() {
 
