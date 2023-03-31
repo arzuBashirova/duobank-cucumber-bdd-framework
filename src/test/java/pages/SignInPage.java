@@ -15,28 +15,28 @@ public class SignInPage {
     }
 
     @FindBy (xpath = "//h4[.='Welcome Back!']")
-    WebElement welcomeMessage;
+    private WebElement welcomeMessage;
 
     public WebElement getWelcomeMessage() {
         return welcomeMessage;
     }
 
     @FindBy (xpath = "//input")
-    List<WebElement> inputFields;
+    private   List<WebElement> inputFields;
 
     public List<WebElement> getInputFields() {
         return inputFields;
     }
 
     @FindBy (name = "email")
-    WebElement email;
+    private WebElement email;
 
     public void sendKeysToEmailField(String keys){
         email.sendKeys(keys);
     }
 
     @FindBy (name = "password")
-    WebElement password;
+    private WebElement password;
 
     public WebElement getEmail() {
         return email;
@@ -49,7 +49,7 @@ public class SignInPage {
         password.sendKeys(keys);
     }
     @FindBy (name = "login")
-    WebElement SignInButton;
+    private WebElement SignInButton;
 
     public void clickOnSignInButton(){
 
