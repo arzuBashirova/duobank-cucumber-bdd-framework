@@ -2,7 +2,7 @@
 
 Feature: As a user, I want to be able to sign in to my mortgage account, so that I can access my account information and perform necessary actions.
 
-  Background: Common steps for all scenarios in sign up page
+  Background: Common steps for all scenarios in sign in page
 
     Given The user is on the Sign in page
 

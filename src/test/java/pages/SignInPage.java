@@ -63,10 +63,6 @@ public class SignInPage {
         sendKeysToPasswordField(password);
     }
 
-    private String errorMessage=email.getAttribute("placeholder");
-    public String getErrorMessage() {
-        return errorMessage;
-    }
 
 
 }
