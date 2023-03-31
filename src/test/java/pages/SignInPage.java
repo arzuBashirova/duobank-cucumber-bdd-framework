@@ -31,7 +31,42 @@ public class SignInPage {
     @FindBy (name = "email")
     WebElement email;
 
+    public void sendKeysToEmailField(String keys){
+        email.sendKeys(keys);
+    }
+
+    @FindBy (name = "password")
+    WebElement password;
+
     public WebElement getEmail() {
         return email;
     }
+    public WebElement getPassword() {
+        return password;
+    }
+
+    public void sendKeysToPasswordField(String keys){
+        password.sendKeys(keys);
+    }
+    @FindBy (name = "login")
+    WebElement SignInButton;
+
+    public void clickOnSignInButton(){
+
+        SignInButton.click();
+    }
+    public void userEnterInvalidEmail(){
+
+        String email= "asdfghjwuytrfv";
+        String password= "VWK@uvx2dzw5rgv1kdx";
+        sendKeysToEmailField(email);
+        sendKeysToPasswordField(password);
+    }
+
+    private String errorMessage=email.getAttribute("placeholder");
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+
 }
