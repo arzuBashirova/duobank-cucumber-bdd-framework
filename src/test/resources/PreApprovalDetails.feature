@@ -5,6 +5,7 @@ Feature: As a user, I want to use the Preapproval Details page of my bank's mort
 
     Given The user is on the preapproval details page
 
+    @dropdowmTest
     Scenario: User navigates to preapproval details page to verify dropdown menu options
 
     When The user clicks on Dropdown menu of options for "Purpose of Loan"
