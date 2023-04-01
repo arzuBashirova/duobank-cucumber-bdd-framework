@@ -31,11 +31,18 @@ public class PreApprovalDetails_Page {
     public List<WebElement> getPurposeOfLoanDropdown(){return purposeOfLoanDropdown;}//Assert.assertEquals(3,list.size());
 
     @FindBy (name = "est_purchase_price")
-    WebElement estimatedPurchasePrice;
+   private WebElement estimatedPurchasePrice;
 
-    public WebElement getEstimatedPurchasePrice() {estimatedPurchasePrice.sendKeys("2000.50");
-        return estimatedPurchasePrice;}
+    public WebElement getEstimatedPurchasePrice() {
+        return estimatedPurchasePrice;
+    }
 
+    //  public WebElement getEstimatedPurchasePrice() {estimatedPurchasePrice.sendKeys("2000.50");
+    //    return estimatedPurchasePrice;}
+    public  void sendKeysToEstimatedPurchasePrice(){
+
+        estimatedPurchasePrice.sendKeys("2000.50");
+    }
     @FindBy (id = "downpayment")
     WebElement downPayment;
 
