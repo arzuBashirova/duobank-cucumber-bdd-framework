@@ -29,14 +29,14 @@ public class SignInPage {
     }
 
     @FindBy (name = "email")
-    WebElement email;
+   private WebElement email;
 
     public void sendKeysToEmailField(String keys){
         email.sendKeys(keys);
     }
 
     @FindBy (name = "password")
-    WebElement password;
+  private  WebElement password;
 
     public WebElement getEmail() {
         return email;
@@ -49,7 +49,7 @@ public class SignInPage {
         password.sendKeys(keys);
     }
     @FindBy (name = "login")
-    WebElement SignInButton;
+   private  WebElement SignInButton;
 
     public void clickOnSignInButton(){
 

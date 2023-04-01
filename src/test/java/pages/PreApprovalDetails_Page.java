@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.ConfigReader;
 import utils.Driver;
 
 import java.util.List;
@@ -10,6 +11,14 @@ import java.util.List;
 public class PreApprovalDetails_Page {
 
     public PreApprovalDetails_Page(){PageFactory.initElements(Driver.getDriver(), this);}
+
+
+    @FindBy (xpath = "//*[@id=\"main-menu-navigation\"]/li/ul/li[1]/a")
+    private WebElement MortgageApplication;
+
+    public void clickMortgageApplication(){
+        MortgageApplication.click();
+    }
 
     @FindBy (xpath = "//contains (text(), 'Preapproval Details')")
     WebElement preapprovalDetails;
@@ -34,14 +43,35 @@ public class PreApprovalDetails_Page {
         return downPayment;}
 
     @FindBy (name = "down_payment_percent")
-    WebElement downPaymentPercentage;
+    private WebElement downPaymentPercentage;
 
     public WebElement getDownPaymentPercentage() {downPaymentPercentage.sendKeys("2.50");//1950
         return downPaymentPercentage;}
 
     @FindBy(xpath = "//*[@id=\"steps-uid-0-p-0\"]/div[5]/div")
-    WebElement calculatedAmount;
+  private   WebElement calculatedAmount;
 
     public WebElement getCalculatedAmount() {calculatedAmount.getText();
     return calculatedAmount;}
+
+    @FindBy (name = "password")
+    private WebElement password;
+    @FindBy (name = "login")
+   private WebElement SignInButton;
+
+    @FindBy (name = "email")
+    private WebElement email;
+
+    public void sendKeysToPasswordField(String keys){
+        password.sendKeys(keys);
+    }
+    public void sendKeysToEmailField(String keys){
+        email.sendKeys(keys);
+    }
+    public void SignIn(){//Mohina, instead of repeating the steps I created only one SignIn method to sign in
+
+        sendKeysToEmailField(ConfigReader.getProperty("email"));
+        sendKeysToEmailField(ConfigReader.getProperty("password"));
+        SignInButton.click();
+    }
 }

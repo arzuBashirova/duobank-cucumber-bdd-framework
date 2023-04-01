@@ -16,15 +16,15 @@ import java.util.List;
 
 public class PreApprovalDetails_StepDefinitions {
 
-    @Before()
-    public void setUpScenario(){
-        Driver.getDriver().get(ConfigReader.getProperty("homepage"));
-        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        Driver.getDriver().manage().window().maximize();
-    }
+
+
     @Given("The user is on the preapproval details page")
     public void the_user_is_on_the_preapproval_details_page() {
-        //Assert.assertEquals("http://qa-duobank.us-east-2.elasticbeanstalk.com/mortgage.php",Driver.getDriver().getCurrentUrl());
+
+        PreApprovalDetails_Page preApprovalDetails_page= new PreApprovalDetails_Page();
+        preApprovalDetails_page.SignIn();
+        preApprovalDetails_page.clickMortgageApplication();
+        Assert.assertEquals("http://qa-duobank.us-east-2.elasticbeanstalk.com/mortgage.php",Driver.getDriver().getCurrentUrl());
     }
 
     @When("The user clicks on Dropdown menu of options for \"Purpose of Loan\"")
