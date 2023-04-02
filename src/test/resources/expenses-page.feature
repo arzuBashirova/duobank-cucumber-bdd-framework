@@ -25,7 +25,7 @@ Feature: Expenses page feature
     When the user selects Rent the Monthly Rental Payment field should be required
     Then must be a numeric input field that only allows positive numbers
 
-    @bug
+    @bugRent
   Scenario:
     When the user selects Rent the Monthly Rental Payment field should be required
     And must be a numeric input field less then one
@@ -37,7 +37,7 @@ Feature: Expenses page feature
     Then the user should see an error message for empty input
 
 
-   @bug
+   @bugRent
   Scenario:
     When the user selects Rent the Monthly Rental Payment field should be required
     And must be a not numeric input field
