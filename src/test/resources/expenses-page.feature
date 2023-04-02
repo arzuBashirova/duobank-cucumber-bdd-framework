@@ -14,30 +14,30 @@ Feature: Expenses page feature
     And fills out personal info
     Then the user is redirected to the expenses page
 
-  @positive
+  @positiveRent
   Scenario: the user should be able to select only one checkbox.
     Given the user is on the Expenses page
     When the user should have 2 checkboxes one for Rent and one for Own
     Then the user should be able to select only one checkbox.
 
-  @positive
+  @positiveRent
   Scenario:
     When the user selects Rent the Monthly Rental Payment field should be required
     Then must be a numeric input field that only allows positive numbers
 
-    @bug
+    @bugRent
   Scenario:
     When the user selects Rent the Monthly Rental Payment field should be required
     And must be a numeric input field less then one
     Then the user should see an error message for input
 
-   @positive
+   @positiveRent
   Scenario:
     When the user selects Rent the Monthly Rental Payment field should be required
     Then the user should see an error message for empty input
 
 
-   @bug
+   @bugRent
   Scenario:
     When the user selects Rent the Monthly Rental Payment field should be required
     And must be a not numeric input field
