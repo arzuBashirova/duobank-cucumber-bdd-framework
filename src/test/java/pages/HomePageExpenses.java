@@ -30,7 +30,7 @@ public class HomePageExpenses {
     }
 
     public void fillSignInField(){
-        this.email.sendKeys(ConfigReader.getProperty("email"));
+        this.email.sendKeys(ConfigReader.getProperty("username"));
         this.password.sendKeys(ConfigReader.getProperty("password"));
     }
 

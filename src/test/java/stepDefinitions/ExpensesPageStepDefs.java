@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import pages.HomePageExpenses;
+import pages.*;
 import utils.SeleniumUtils;
 
 public class ExpensesPageStepDefs {
@@ -35,7 +35,7 @@ public class ExpensesPageStepDefs {
     }
 
     @And("fills out personal info")
-    public void fillsOutPersonalInfo() throws InterruptedException {
+    public void fillsOutPersonalInfo()  {
         new PersonalInfoExpenses().fillInPersonalInfoPage();
 
 
@@ -45,7 +45,7 @@ public class ExpensesPageStepDefs {
 
 
     @Then("the user is redirected to the expenses page")
-    public void theUserIsRedirectedToTheExpensesPage() throws InterruptedException {
+    public void theUserIsRedirectedToTheExpensesPage() {
         SeleniumUtils.waitForVisibility(new ExpensesPage().getMessage(),5);
     }
     @Given("the user is on the Expenses page")
@@ -58,7 +58,8 @@ public class ExpensesPageStepDefs {
     public void the_user_should_have_checkboxes_one_for_rent_and_one_for_own(Integer numOfCheckboxes) {
         Assert.assertEquals(numOfCheckboxes,Integer.valueOf(new ExpensesPage().getCheckboxes().size()));
     }
-    @Then("The user should be able to select only one checkbox.")
+
+    @Then("the user should be able to select only one checkbox.")
     public void the_user_should_be_able_to_select_only_one_checkbox() {
         SeleniumUtils.jsClick(new ExpensesPage().getRentBox());
         Assert.assertTrue(new ExpensesPage().getRentBox().isSelected());

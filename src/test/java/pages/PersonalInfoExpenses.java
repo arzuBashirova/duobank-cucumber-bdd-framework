@@ -51,7 +51,7 @@ public class PersonalInfoExpenses {
 
 
 
-    public void fillInPersonalInfoPage () throws InterruptedException {
+    public void fillInPersonalInfoPage ()  {
         SeleniumUtils.jsClick(this.coborrower);
         this.firstName.sendKeys(new Faker().name().firstName());
         this.lastName.sendKeys(new Faker().name().lastName());
