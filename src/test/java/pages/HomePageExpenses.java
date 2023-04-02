@@ -18,10 +18,10 @@ public class HomePageExpenses {
     @FindBy(name = "login")
     private WebElement singInLink;
 
-    @FindBy(id = "exampleInputEmail1")
+    @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(id = "exampleInputPassword1")
+    @FindBy(id = "password")
     private WebElement password;
 
 
