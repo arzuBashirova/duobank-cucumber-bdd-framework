@@ -18,10 +18,10 @@ public class HomePageExpenses {
     @FindBy(name = "login")
     private WebElement singInLink;
 
-    @FindBy(id = "exampleInputEmail1")
+    @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(id = "exampleInputPassword1")
+    @FindBy(id = "password")
     private WebElement password;
 
 
@@ -30,7 +30,7 @@ public class HomePageExpenses {
     }
 
     public void fillSignInField(){
-        this.email.sendKeys(ConfigReader.getProperty("email"));
+        this.email.sendKeys(ConfigReader.getProperty("username"));
         this.password.sendKeys(ConfigReader.getProperty("password"));
     }
 
