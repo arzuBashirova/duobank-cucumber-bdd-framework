@@ -5,12 +5,15 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.SignInPage;
 import utils.ConfigReader;
 import utils.Driver;
 import utils.SeleniumUtils;
 
-public class SignInStepDefinitions {
+import java.util.List;
+
+public class SignInStepDefinitions {//sign in definitions
 
     @Given("The user is on the Sign in page")
     public void i_am_on_sign_in_page() {
@@ -41,8 +44,6 @@ public class SignInStepDefinitions {
     }
 
 
-
-    }
 
 
     @When("The user left the fields blank")
@@ -109,9 +110,95 @@ public class SignInStepDefinitions {
     }
 
 
+    @When("the user enters a password into password field")
+    public void theUserEntersAPasswordIntoPasswordField() {
+
+        new SignInPage().sendKeysToPasswordField(ConfigReader.getProperty("password"));
+    }
+    @Then("password should be masked")
+    public void passwordShouldBeMasked() {
+
+        if (new SignInPage().getPassword().getAttribute("type") == "password"){
+            // if it is, do something
+            Assert.assertEquals(ConfigReader.getProperty("homepage"),Driver.getDriver().getCurrentUrl());
+
+        }else {
+            // not masked
+            Assert.assertFalse(Driver.getDriver().getPageSource().contains("Welcome"));
+        }
+
+    }
+
+
+    @When("the user doesn't fill fields")
+    public void theUserDoesnTFillFields() {
 
 
 
+    }
 
+    @Then("the sign in button should be disabled")
+    public void theSignInButtonShouldBeDisabled() {
+        if(new SignInPage().getSignInButton().isEnabled()){
+
+            Assert.assertEquals(ConfigReader.getProperty("homepage"),Driver.getDriver().getCurrentUrl());
+        }else {
+            Assert.assertFalse(Driver.getDriver().getPageSource().contains("Welcome"));
+        }
+
+    }
+
+    @When("the user enters correct credentials")
+    public void theUserEntersCorrectCredentials() {
+
+        new SignInPage().signIN();
+
+    }
+
+    @Then("the user navigates to the mortgage account dashboard")
+    public void theUserNavigatesToTheMortgageAccountDashboard() {
+        Assert.assertEquals("http://qa-duobank.us-east-2.elasticbeanstalk.com/dashboard.php",Driver.getDriver().getCurrentUrl());
+    }
+
+    @When("the user enters incorrect credentials")
+    public void theUserEntersIncorrectCredentials() {
+
+        new SignInPage().sendKeysToEmailField("123456789@gmail.com");
+        new SignInPage().sendKeysToPasswordField("sdfg432w` ");
+
+    }
+
+    @Then("the application should display an error message “Login Failed”")
+    public void theApplicationShouldDisplayAnErrorMessageLoginFailed() {
+
+        //System.out.println(new SignInPage().getHeader().getAttribute("validationMessage"));
+        List<WebElement> l= Driver.getDriver().findElements(By.xpath("//*[contains(text(),'Login Failed')]"));
+        //I couldn't navigate element of “Login Failed” error message.
+
+
+    }
+
+    @When("the user doesn't have an account")
+    public void theUserDoesnTHaveAnAccount() {
+
+
+    }
+
+    @Then("the sign in page should have a {string} text")
+    public void theSignInPageShouldHaveALink(String arg0) {
+
+        System.out.println(new SignInPage().getQuestion1().getText());
+
+        Assert.assertEquals(new SignInPage().getQuestion1().getText(),arg0);
+    }
+
+    @Then("the sign in page should have a {string} link")
+    public void theSignInPageShouldHaveALink2(String arg0) {
+
+        String linkText=Driver.getDriver().findElement(By.linkText(arg0)).getText();
+
+        Assert.assertEquals(arg0,linkText);
+
+    }
 }
 

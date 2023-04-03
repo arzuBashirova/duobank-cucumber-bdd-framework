@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.ConfigReader;
 import utils.Driver;
 
 import java.util.List;
@@ -51,6 +52,11 @@ public class SignInPage {
     @FindBy (name = "login")
     private WebElement SignInButton;
 
+    public WebElement getSignInButton() {
+        return SignInButton;
+    }
+
+
     public void clickOnSignInButton(){
 
         SignInButton.click();
@@ -64,5 +70,21 @@ public class SignInPage {
     }
 
 
+    public void signIN(){
+
+        email.sendKeys(ConfigReader.getProperty("email"));
+        password.sendKeys(ConfigReader.getProperty("password"));
+        clickOnSignInButton();
+
+    }
+
+
+    @FindBy (xpath = "//small[@class='mr-25']")
+
+    private WebElement question1;
+
+    public WebElement getQuestion1() {
+        return question1;
+    }
 
 }
