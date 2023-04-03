@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import utils.Driver;
 
-public class HomePage {
+public class SignUpPage {
 
-    public HomePage() {
+    public SignUpPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -31,11 +31,8 @@ public class HomePage {
     @FindBy(id = "sign-up-button")
     public WebElement signUpButton;
 
-    @FindBy(tagName = "Welcome Back!")
-    public WebElement welcomeBackMessage;
-
-
-
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div[2]/section/div/div/div/div[1]/div/div[3]/div/div/a")
+    public WebElement registrationSignInLink;
 
 
     public void clickSignUpLink() {
@@ -44,12 +41,12 @@ public class HomePage {
 
 
     public void fillTheFormWithRandomData() {
-//        Faker faker = new Faker();
-        firstName.sendKeys("John");
-        lastName.sendKeys("Smith");
-        String email = "john.smith@gmail.com";
+        Faker faker = new Faker();
+        firstName.sendKeys(faker.name().firstName());
+        lastName.sendKeys(faker.name().lastName());
+        String email = faker.internet().emailAddress();
         this.email.sendKeys(email);
-        String password = "123456";
+        String password = faker.internet().password();
         this.password.sendKeys(password);
     }
 
@@ -58,13 +55,9 @@ public class HomePage {
         signUpButton.click();
     }
 
-    public String getWelcomeBackMessage() {
-        return welcomeBackMessage.getText();
+    public void clickRegistrationSignInLink() {
+        registrationSignInLink.click();
     }
 
 
 }
-
-
-
-
