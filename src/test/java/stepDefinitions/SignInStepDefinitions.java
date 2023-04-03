@@ -13,7 +13,7 @@ import utils.SeleniumUtils;
 
 import java.util.List;
 
-public class SignInStepDefinitions {
+public class SignInStepDefinitions {//sign in definitions
 
     @Given("The user is on the Sign in page")
     public void i_am_on_sign_in_page() {
