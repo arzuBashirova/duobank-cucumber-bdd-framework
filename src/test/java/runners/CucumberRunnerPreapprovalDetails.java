@@ -7,12 +7,17 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        tags = "@testMohi",
         features = "src/test/resources",
         glue = "stepDefinitions",
-        stepNotifications = true
+        stepNotifications = true,
+        plugin= {
+                "pretty",
+                "html:target/basic-report/report.html"
+        }
 
 )
-public class CucumberRunner {
+public class CucumberRunnerPreapprovalDetails{
 
 
 
