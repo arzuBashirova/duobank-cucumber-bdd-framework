@@ -7,14 +7,14 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)//sign In runner
 @CucumberOptions(
-        tags = "@SignInTesting",
+       // tags = "@SignInTesting",
         features = "src/test/resources",
         glue = "stepDefinitions",
         stepNotifications = true,
         plugin= {
                 "html:target/basic-report/report.html"
         }
-       // ,dryRun = true
+        //,dryRun = true
 
 )
 public class CucumberRunnerSignIn {
