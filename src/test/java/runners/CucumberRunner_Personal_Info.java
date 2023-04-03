@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        //tags = "@invalidData",
+
         features = "src/test/resources",
         glue = "stepDefinitions",
         stepNotifications = true,
@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         }
 
 )
-public class CucumberRunnerSignIn {
+public class CucumberRunner_Personal_Info{
 
 
 

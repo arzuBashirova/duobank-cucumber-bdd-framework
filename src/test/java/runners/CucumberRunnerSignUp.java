@@ -1,13 +1,12 @@
 package runners;
 
-
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        //tags = "@invalidData",
+        tags = "@Scenario1 or @Scenario2 or @Scenario3 or @Scenario4",
         features = "src/test/resources",
         glue = "stepDefinitions",
         stepNotifications = true,
@@ -16,7 +15,7 @@ import org.junit.runner.RunWith;
         }
 
 )
-public class CucumberRunnerSignIn {
+public class CucumberRunnerSignUp {
 
 
 
