@@ -18,12 +18,12 @@ public class Hooks {
         Driver.getDriver().manage().window().maximize();
     }
 
-    @After()
-    public void tearDownScenario(Scenario scenario){
-        if(scenario.isFailed()){
-            scenario.attach(((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES), "image/png", "screenshot");
-        }
-
-        Driver.quitDriver();
-    }
+//    @After()
+//    public void tearDownScenario(Scenario scenario){
+//        if(scenario.isFailed()){
+//            scenario.attach(((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES), "image/png", "screenshot");
+//        }
+//
+//        Driver.quitDriver();
+//    }
 }
