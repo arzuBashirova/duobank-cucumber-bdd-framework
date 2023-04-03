@@ -36,4 +36,7 @@ public class SignInStepDefinitions {
 
         Assert.assertEquals("Email address",new SignInPage().getEmail().getAttribute("placeholder"));
     }
-}
+
+
+    }
+
