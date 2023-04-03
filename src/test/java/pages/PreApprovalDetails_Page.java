@@ -69,9 +69,9 @@ public class PreApprovalDetails_Page {
         Random random =  new Random();
         mortgageButton.click();
         realtorInfo.sendKeys(faker.name().username());
-        int housePrice = random.nextInt(500001) + 500000;
+        int housePrice = random.nextInt(200012) + 200012;
         purchasePrice.sendKeys(String.valueOf(housePrice));
-        int downpaymentPrice = random.nextInt(50001) + 50000;
+        int downpaymentPrice = random.nextInt(100012) + 100012;
         downpayment.sendKeys(String.valueOf(downpaymentPrice));
         nextButton.click();
 
