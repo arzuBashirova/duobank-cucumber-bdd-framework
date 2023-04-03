@@ -93,7 +93,7 @@ public class ExpensesPageStepDefs {
     @Then("the user should see an error message for input")
     public void the_user_should_see_an_error_message_for_input() {
         SeleniumUtils.waitForVisibility(new ExpensesPage().getMonthlyRentalPaymentError(), 5);
-        Assert.assertEquals( "Please enter a value greater than or equal to 1.", new ExpensesPage().getMonthlyRentalPaymentError().getText());
+        Assert.assertEquals( "PLEASE ENTER A VALUE GREATER THAN OR EQUAL TO 0.", new ExpensesPage().getMonthlyRentalPaymentError().getText());
     }
 
 
