@@ -39,6 +39,12 @@ public class SignInStepDefinitions {
 
         Assert.assertEquals("Email address",new SignInPage().getEmail().getAttribute("placeholder"));
     }
+
+
+
+    }
+
+
     @When("The user left the fields blank")
     public void the_user_left_the_fields_blank() {
 
@@ -108,3 +114,4 @@ public class SignInStepDefinitions {
 
 
 }
+
