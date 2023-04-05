@@ -48,11 +48,14 @@
         <artifactId>cucumber-core</artifactId>
         <version>7.11.2</version>
     </dependency>
-<!--    <dependency>-->
-<!--        <groupId>cn.geminis.dependency</groupId>-->
-<!--        <artifactId>geminis-dependency-version</artifactId>-->
-<!--        <version>2021.9.0</version>-->
-<!--    </dependency>-->
+
+    <!-- We can use lombock for generate getters and setters automatically -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.24</version>
+        <optional>true</optional>
+    </dependency>
 
 
 </dependencies>
