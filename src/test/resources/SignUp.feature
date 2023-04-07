@@ -2,7 +2,7 @@ Feature: Sign up for a mortgage application account
 
   As a potential user and customer, I should be able to use the Sign Up page and create an account to use the DuoBank Mortgage Application services.
 
-  @Scenario1
+  @Scenario1 @smoke
   Scenario: User wants to sign up for an account
     Given the user is on the registration page of the mortgage application website
     When the user enters their First Name, Last Name, Email Address, and Password

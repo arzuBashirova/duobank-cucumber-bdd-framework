@@ -14,7 +14,7 @@ Feature: Expenses page feature
     And fills out personal info 1
     Then the user is redirected to the expenses page 1
 
-  @positiveRent
+  @positiveRent @smoke
   Scenario: the user should be able to select only one checkbox.
     Given the user is on the Expenses page 1
     When the user should have 2 checkboxes one for Rent and one for Own 1
