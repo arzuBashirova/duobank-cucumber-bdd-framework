@@ -10,6 +10,7 @@ Feature: As a potential homebuyer
     When the user sees the email and password and enters info here
     Then the user should be able to sign into page here
 
+
   Scenario: User is on the preapproval details page
 
     When The user clicks on Dropdown menu of options for "Purpose of Loan" here

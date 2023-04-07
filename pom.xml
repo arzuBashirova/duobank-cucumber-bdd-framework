@@ -58,6 +58,13 @@
         <optional>true</optional>
     </dependency>
 
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>3.24.2</version>
+        <scope>test</scope>
+    </dependency>
+
 
 </dependencies>
 
@@ -72,6 +79,10 @@
                         <includes>
                             <include>CucumberRunnerSignIn.java</include>
                         </includes>
+                        <!-- the following 2 lines should be added only when you want run feature files in parallel
+   for a normal run, they should be removed or commented out-->
+<!--                        <parallel>methods</parallel>-->
+<!--                        <useUnlimitedThreads>true</useUnlimitedThreads>-->
                     </configuration>
                 </plugin>
             </plugins>
