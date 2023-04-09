@@ -41,6 +41,12 @@ public class PersonalInfoExpenses {
     @FindBy(id = "b_home")
     private WebElement homeNumber;
 
+    @FindBy(id = "b_dob")
+    private WebElement dob;
+
+
+
+
 
 
     @FindBy(id = "privacypolicy")
@@ -56,6 +62,7 @@ public class PersonalInfoExpenses {
         this.firstName.sendKeys(new Faker().name().firstName());
         this.lastName.sendKeys(new Faker().name().lastName());
         this.email.sendKeys(new Faker().internet().emailAddress());
+        this.dob.sendKeys("12122022");
         this.SSN.sendKeys(new Faker().idNumber().ssnValid());
         new Select(maritalStatus).selectByValue("Married");
         this.cell.sendKeys(new Faker().phoneNumber().cellPhone());

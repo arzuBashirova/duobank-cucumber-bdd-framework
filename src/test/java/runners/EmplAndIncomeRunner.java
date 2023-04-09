@@ -14,7 +14,8 @@ import org.junit.runner.RunWith;
 //        you could combine any number or type of tags -> "@positive and @signUp or @smoke"
         // omitting tags entirely will run everything under the given path in features, you could use it to run regression
 
-       // tags = "@working",
+        tags = "@working",
+
 //
 
         features = "src/test/resources", // the path where all feature files are located
@@ -25,8 +26,8 @@ import org.junit.runner.RunWith;
                "html:target/basic-report/report.html"  // to generate a basic built-in report
         }
 
-        ,dryRun = true  // to generate step definition snippets without actually running the scenario
+        //,dryRun = true  // to generate step definition snippets without actually running the scenario
 
 )
-public class ExpensesPageRunner {
+public class EmplAndIncomeRunner {
 }

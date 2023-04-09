@@ -42,16 +42,27 @@
         <scope>test</scope>
     </dependency>
 
+
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
     <dependency>
         <groupId>io.cucumber</groupId>
         <artifactId>cucumber-core</artifactId>
         <version>7.11.2</version>
     </dependency>
+
+    <!-- We can use lombock for generate getters and setters automatically -->
     <dependency>
-        <groupId>cn.geminis.dependency</groupId>
-        <artifactId>geminis-dependency-version</artifactId>
-        <version>2021.9.0</version>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.24</version>
+        <optional>true</optional>
+    </dependency>
+
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>3.24.2</version>
+        <scope>test</scope>
     </dependency>
 
 
@@ -68,6 +79,10 @@
                         <includes>
                             <include>CucumberRunnerSignIn.java</include>
                         </includes>
+                        <!-- the following 2 lines should be added only when you want run feature files in parallel
+   for a normal run, they should be removed or commented out-->
+<!--                        <parallel>methods</parallel>-->
+<!--                        <useUnlimitedThreads>true</useUnlimitedThreads>-->
                     </configuration>
                 </plugin>
             </plugins>
