@@ -11,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import pages.SignUpPage;
 import utils.Driver;
 
+import static org.junit.Assert.assertFalse;
+
 
 public class SignUpStepDefinitions {
     @Given("the user is on the registration page of the mortgage application website")
@@ -72,37 +74,15 @@ public class SignUpStepDefinitions {
 
 
     //Scenario 2
-
-    @When("the user enters invalid input into any of the input fields")
-    public void the_user_enters_invalid_input_into_any_of_the_input_fields() {
+    @Then("the user should not be able to put invalid input into the input fields")
+    public void theUserShouldNotBeAbleToPutInvalidInputIntoTheInputFields() {
         SignUpPage signUpPage = new SignUpPage();
-        signUpPage.firstName.sendKeys("123");
-        signUpPage.lastName.sendKeys("Smith");
         signUpPage.email.sendKeys("evelyn.smith@gmail.com");
         signUpPage.password.sendKeys("123456");
-    }
-
-    @Then("the Sign Up button should remain disabled")
-    public void the_sign_up_button_should_remain_disabled() throws InterruptedException {
-        SignUpPage signUpPage = new SignUpPage();
-        WebElement signUpButton = signUpPage.signUpButton;
-        Assert.assertFalse("The Sign Up button is not disabled", signUpButton.isEnabled());
-        Thread.sleep(5000);
-    }
-
-    @Then("error messages should be displayed for the invalid input fields")
-    public void error_messages_should_be_displayed_for_the_invalid_input_fields() {
-//        SignUpPage signUpPage = new SignUpPage();
-//        WebElement firstNameError = signUpPage.firstName.findElement(By.xpath("../div[@class='invalid-feedback']"));
-//        String expectedError = "First name must contain only letters and spaces";
-//        String actualError = firstNameError.getText().trim();
-//        Assert.assertEquals("Error message does not match expected", expectedError, actualError);
-
-        SignUpPage signUpPage = new SignUpPage();
-        WebElement firstNameError = signUpPage.firstName.findElement(By.xpath("//*[@id=\"auth-login\"]/div/div/div/div[1]/div/div[2]/div/div[1]/div[1]/div[2]/div"));
-        Assert.assertTrue(firstNameError.isDisplayed());
-
-
+        signUpPage.firstName.sendKeys("123");
+        signUpPage.lastName.sendKeys("Smith");
+        Assert.assertEquals("Invalid input allowed for first name field", "", signUpPage.firstName.getAttribute("value"));
+        Assert.assertTrue("Invalid input allowed for last name field", signUpPage.lastName.getAttribute("value").matches("[^0-9]+"));
     }
 
     //Scenario 3
@@ -123,11 +103,11 @@ public class SignUpStepDefinitions {
         Thread.sleep(5000);
     }
 
-    @And("an error message {string} should be displayed")
+    @Then("an error message {string} should be displayed")
     public void an_error_message_should_be_displayed(String string) {
-        String expectedErrorMessage = "Email already exists";
+        String expectedErrorMessage = "This email already used";
         SignUpPage signUpPage = new SignUpPage();
-        WebElement errorMessageElement = signUpPage.email.findElement(By.xpath("../div[@class='invalid-feedback']"));
+        WebElement errorMessageElement = signUpPage.email.findElement(By.xpath("//*[@id=\"emailerror\"]"));
         String actualErrorMessage = errorMessageElement.getText().trim();
         Assert.assertEquals("Error message does not match expected", expectedErrorMessage, actualErrorMessage);
     }
@@ -155,4 +135,5 @@ public class SignUpStepDefinitions {
         Assert.assertEquals("http://qa-duobank.us-east-2.elasticbeanstalk.com/index.php", driver.getCurrentUrl());
 
     }
+
 }
