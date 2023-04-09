@@ -37,6 +37,9 @@ public class ExpensesPage {
     @FindBy(id = "monthlyrentalpayment-error")
     private WebElement monthlyRentalPaymentError;
 
+    @FindBy(xpath = "//a[@href='#next']")
+    private WebElement next;
+
 
 
 
@@ -90,6 +93,10 @@ public class ExpensesPage {
 
     public void clearmonthlyRentPayBox(){
         monthlyRentPayBox.clear();
+    }
+
+    public void clickNextButton() {
+        SeleniumUtils.jsClick(next);
     }
 
 
