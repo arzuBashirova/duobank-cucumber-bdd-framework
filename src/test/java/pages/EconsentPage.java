@@ -1,14 +1,10 @@
 package pages;
 
 import com.github.javafaker.Faker;
-import lombok.Data;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.w3c.dom.html.HTMLInputElement;
 import utils.Driver;
 
 
@@ -78,4 +74,39 @@ public class EconsentPage {
         nextButton.click();
     }
 
+//    public void clickOnTheButton(String string) {
+//        switch (string) {
+//            case "Agree":
+//                clickAgreeButton();
+//                break;
+//            case "Don't Agree":
+//                clickDontAgreeButton();
+//                break;
+//            case "Next":
+//                clickNextButton();
+//                break;
+//            default:
+//                throw new IllegalStateException("Unexpected value: " + string);
+//        }
+//    }
+
+    public boolean alertMessageDisplayed() {
+        Alert alert = Driver.getDriver().switchTo().alert();
+        return alert.getText().contains("Please agree to the terms and conditions");
+    }
+
+    public String getFirstNameValue() {
+        return firstName.getAttribute("value");
+    }
+
+    public String getLastNameValue() {
+        return lastName.getAttribute("value");
+    }
+
+
+    public void clearTheForm() {
+        firstName.clear();
+        lastName.clear();
+        email.clear();
+    }
 }
