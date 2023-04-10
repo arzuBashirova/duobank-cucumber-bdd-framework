@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.ConfigReader;
 import utils.Driver;
+import utils.SeleniumUtils;
 
 import java.util.List;
 
@@ -75,6 +76,8 @@ public class SignInPage {
         email.sendKeys(ConfigReader.getProperty("email"));
         password.sendKeys(ConfigReader.getProperty("password"));
         clickOnSignInButton();
+
+
 
     }
 
