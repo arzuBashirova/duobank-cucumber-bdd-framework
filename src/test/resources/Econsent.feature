@@ -14,6 +14,6 @@ Feature: Econsent Page
     Then the value boxes for first and last names should be filled
 
   @second
-    Scenario: User enters invalid first name, last name and email address
-        When the user fills the form with random data  including first name, last name and email
-        Then the value boxes for first and last names should be blank
+  Scenario: User enters invalid first name, last name and email address
+    When the user fills the form with random data  including first name, last name and email
+    Then the value boxes for first and last names should be blank

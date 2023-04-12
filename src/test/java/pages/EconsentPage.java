@@ -13,6 +13,8 @@ public class EconsentPage {
 
     public EconsentPage() {
         PageFactory.initElements(Driver.getDriver(), this);
+
+
     }
 
 
