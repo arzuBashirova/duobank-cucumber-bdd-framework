@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 
 import io.cucumber.java.en.And;
@@ -6,11 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import utils.Driver;
-import org.openqa.selenium.WebElement;
 import pages.DashboardPage;
-
-import javax.swing.*;
 
 
 public class DashboardStepDefinitions {

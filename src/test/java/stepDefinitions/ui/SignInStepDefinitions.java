@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import pages.SignInPage;
 import utils.ConfigReader;
 import utils.Driver;
-import utils.SeleniumUtils;
 
 import java.util.List;
 

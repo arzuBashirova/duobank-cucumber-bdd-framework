@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import utils.ConfigReader;
 import utils.Driver;
+import utils.SeleniumUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,12 @@ public class EmploymentAndIncomePageArzu {
         clear1.click();
     }
 
+    @FindBy(xpath = "//a[@id='clear2']")
+    private WebElement clear2;
+
+    public void clickClear2(){
+        clear2.click();
+    }
     @FindBy(xpath = "//button[@class='swal2-confirm btn btn-warning']")
     private WebElement yesButtonPopup;
 
@@ -66,6 +73,28 @@ public class EmploymentAndIncomePageArzu {
     @FindBy(xpath = "//div[@class='swal2-container swal2-center swal2-fade swal2-shown']")
     private WebElement clearPopup;
 
+    @FindBy(xpath = "//a[@id='addemployer']")
+    private WebElement addEmployer;
+
+    public void clickAddEmployer(){
+        addEmployer.click();
+    }
+
+    @FindBy(linkText = "Remove ")
+    private WebElement RemoveButton;
+    public void clickRemoveButton(){
+        RemoveButton.click();
+    }
+    @FindBy(xpath = "//h2[@class='swal2-title']")
+    private WebElement RemovePopup;
+
+    @FindBy (linkText = " Employer2")
+    private WebElement Employer2;
+    @FindBy(linkText = "//button[@class='swal2-confirm btn btn-warning']")
+    private WebElement yesButton2;
+    public void clickyesButton2(){
+        yesButton2.click();
+    }
     public WebElement checkContainFieldsByText(String text){
 
         String xpath= "//div[@id='employer1']//label[contains (text(),'"+text+"')]";
@@ -89,12 +118,12 @@ public class EmploymentAndIncomePageArzu {
 
     public void signinFor2Sprint(){
 
-        Driver.getDriver().findElement(By.id("email")).sendKeys("casperlee@gmail.com");
-        Driver.getDriver().findElement(By.id("password")).sendKeys("casperlee123");
-        Driver.getDriver().findElement(By.id("signin")).click();
-//        Driver.getDriver().findElement(By.id("email")).sendKeys(ConfigReader.getProperty("email"));
-//        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
+//        Driver.getDriver().findElement(By.id("email")).sendKeys("casperlee@gmail.com");
+//        Driver.getDriver().findElement(By.id("password")).sendKeys("casperlee123");
 //        Driver.getDriver().findElement(By.id("signin")).click();
+        Driver.getDriver().findElement(By.id("email")).sendKeys(ConfigReader.getProperty("email"));
+        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
+        Driver.getDriver().findElement(By.id("signin")).click();
 
             }
     public void fillOutPreApprovalPage(){
@@ -136,5 +165,36 @@ public class EmploymentAndIncomePageArzu {
         startDateField.sendKeys(str5);
     }
 
+    public WebElement checkContainFieldsByText2(String text){
 
+        String xpath= "//div[@id='employer2']//label[contains (text(),'"+text+"')]";
+
+//        SeleniumUtils.jsClick( Driver.getDriver().findElement(By.xpath(xpath)));
+        WebElement el= Driver.getDriver().findElement(By.xpath(xpath));
+
+        return el;
+
+    }
+
+    public List<String> firstActualList(){
+        List<String> fields2 = List.of("Employer Name", "Position", "City", "State", "Start Date", "End Date");
+        List<WebElement> elList = new EmploymentAndIncomePageArzu().getListOfFields(fields2);
+        List<String> actFieldList = new ArrayList<>();
+        SeleniumUtils.waitFor(2);
+        for (int i = 0; i < elList.size(); i++) {
+            actFieldList.add(elList.get(i).getText());
+
+        }
+        return actFieldList;
+    }
+
+    public List<WebElement> getListOfFields2(List<String> textsOfField){
+        List<WebElement> list=new ArrayList<>();
+
+        for (int i = 0; i < textsOfField.size(); i++) {
+            list.add(checkContainFieldsByText2(textsOfField.get(i)));
+        }
+        return list;
+
+    }
 }

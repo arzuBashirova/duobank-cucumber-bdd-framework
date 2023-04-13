@@ -1,18 +1,12 @@
-package stepDefinitions;
+package stepDefinitions.ui;
 
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebElement;
 import pages.PreApprovalDetails_Page;
-import utils.ConfigReader;
-import utils.Driver;
 import utils.SeleniumUtils;
 
-import java.time.Duration;
 import java.util.List;
 public class Personal_Information_Step_Definitions {
 
