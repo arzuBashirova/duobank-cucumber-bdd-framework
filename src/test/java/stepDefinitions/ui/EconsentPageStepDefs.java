@@ -1,4 +1,4 @@
-package stepDefinitions.ui;
+package stepDefinitions.UI;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -32,7 +32,7 @@ public class EconsentPageStepDefs {
         sign.clickNextButton();
     }
 
-    private static void extracted( SignInPageNigar sign) {
+    private static void extracted(@NotNull SignInPageNigar sign) {
         sign.employmentAndIncome();
     }
 
