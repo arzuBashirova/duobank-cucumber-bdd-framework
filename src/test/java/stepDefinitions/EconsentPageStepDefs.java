@@ -1,9 +1,9 @@
-package stepDefinitions.UI;
+package stepDefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
 import pages.EconsentPage;
 import pages.ExpensesPage;
