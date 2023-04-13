@@ -34,10 +34,10 @@ public class EmploymentAndIncomeStepDefArzu {
     public void the_page_should_contains_following_fields(List<String> expectedFields) {
 
         List<String> Efields = new ArrayList<>(expectedFields);
-        List<String> fields2 = List.of("Employer Name", "Position", "City", "State", "Start Date");
+        List<String> fields2 = List.of("Employer Name", "Position", "City", "State", "Start Date", "End Date");
         List<WebElement> elList = new EmploymentAndIncomePageArzu().getListOfFields(fields2);
         List<String> actFieldList = new ArrayList<>();
-       SeleniumUtils.waitFor(2);
+        SeleniumUtils.waitFor(2);
         for (int i = 0; i < elList.size(); i++) {
             actFieldList.add(elList.get(i).getText());
 
@@ -77,7 +77,7 @@ public class EmploymentAndIncomeStepDefArzu {
     @Then("checkbox should be unchecked by default")
     public void checkboxShouldBeUncheckedByDefault() {
 
-       // SeleniumUtils.jsClick( new EmploymentAndIncomePageArzu().getCurrentJobCheckBox());
+        // SeleniumUtils.jsClick( new EmploymentAndIncomePageArzu().getCurrentJobCheckBox());
         Assert.assertFalse(new EmploymentAndIncomePageArzu().getCurrentJobCheckBox().isSelected());
 
     }
@@ -85,6 +85,7 @@ public class EmploymentAndIncomeStepDefArzu {
     @When("user clicks clear button Employment and Income page")
     public void userClicksClearButtonEmploymentAndIncomePage() {
 
+        SeleniumUtils.waitFor(2);
         new EmploymentAndIncomePageArzu().clickClear();
     }
 
@@ -104,7 +105,7 @@ public class EmploymentAndIncomeStepDefArzu {
     @Then("in that section information should be deleted not another pages")
     public void inThatSectionInformationShouldBeDeletedNotAnotherPages() {
 
-        List<String> fields2 = List.of("Employer Name", "Position", "City", "State", "Start Date");
+        List<String> fields2 = List.of("Employer Name", "Position", "City", "State", "Start Date","End Date");
         List<WebElement> listOfFields = new EmploymentAndIncomePageArzu().getListOfFields(fields2);
         List<String> ListOfValues = new ArrayList<>();
         for (int i = 0; i < fields2.size(); i++) {
@@ -121,26 +122,90 @@ public class EmploymentAndIncomeStepDefArzu {
 
     }
 
-//    @When("user enters invalid information in each field on the page following info")
-//    public void user_enters_invalid_information_in_each_field_on_the_page_following_info(List<String> dataTable2) {
-//
-////        EmploymentAndIncomePageArzu employmentIncome=new EmploymentAndIncomePageArzu();
-////        employmentIncome.getEmployerNameField().sendKeys(dataTable2.get(0));
-////        employmentIncome.getPositionField().sendKeys(dataTable2.get(1));
-////        employmentIncome.getCityField().sendKeys(dataTable2.get(2));
-////        Select select =new Select(employmentIncome.getStateField());
-////        select.selectByVisibleText(dataTable2.get(3));
-////        employmentIncome.getStartDateField().sendKeys(dataTable2.get(4));
-////        Assert.assertTrue(employmentIncome.getEmployerNameFieldErrorMessage().isDisplayed());
-//
-//    }
-
     @When("User enter username {string} , position {string} , city {string} ,  state {string} and start date {string}")
     public void iEnterUsernamePositionCityStateAndStartDate(String arg0, String arg1, String arg2, String arg3, String arg4) {
 
-       new EmploymentAndIncomePageArzu().sendKeys(arg0,arg1,arg2,arg3,arg4);
+        new EmploymentAndIncomePageArzu().sendKeys(arg0,arg1,arg2,arg3,arg4);
 
+        if(Driver.getDriver().getPageSource().contains("Invalid")){
+            Assert.fail();
+        }
     }
 
 
+    @Then("User enter iusername {string} , iposition {string} , icity {string} ,  istate {string} and istart date {string}")
+    public void userEnterIusernameIpositionIcityIstateAndIstartDate(String arg0, String arg1, String arg2, String arg3, String arg4) {
+        new EmploymentAndIncomePageArzu().sendKeys(arg0,arg1,arg2,arg3,arg4);
+        Driver.getDriver().findElement(By.linkText("Next")).click();
+        Assert.assertTrue(Driver.getDriver().getPageSource().contains("Invalid"));
+    }
+
+    @When("user clicks on add new employer button")
+
+    public void userClicksOnButton(String arg0) {
+
+        SeleniumUtils.waitFor(2);
+        new EmploymentAndIncomePageArzu().clickAddEmployer();
+    }
+
+    @Then("user should be able to add new information")
+    public void userShouldBeAbleToAddNewInformation() {
+
+        Assert.assertTrue(new EmploymentAndIncomePageArzu().getEmployer2().isDisplayed());
+    }
+
+
+    @Then("the page should contains same as first page fields")
+    public void thePageShouldContainsSameAsFirstPageFields() {
+        List<String> fields2 = List.of("Employer Name", "Position", "City", "State", "Start Date", "End Date");
+        List<WebElement> elList = new EmploymentAndIncomePageArzu().getListOfFields2(fields2);
+        List<String> actFieldList2 = new ArrayList<>();
+        SeleniumUtils.waitFor(2);
+        for (int i = 0; i < elList.size(); i++) {
+            actFieldList2.add(elList.get(i).getText());
+
+        }
+        Assert.assertEquals(new EmploymentAndIncomePageArzu().firstActualList(),actFieldList2);
+    }
+
+
+    @When("user clicks clear button second employer Employment and Income page")
+    public void userClicksClearButtonSecondEmployerEmploymentAndIncomePage() {
+        new EmploymentAndIncomePageArzu().clickClear2();
+    }
+
+    @Then("clear popup should display")
+    public void clearPopupShouldDisplay() {
+        Assert.assertTrue(new EmploymentAndIncomePageArzu().getClearPopup().isDisplayed());
+    }
+
+    @Then("in that second employer information should be deleted not another pages")
+    public void inThatSecondEmployerInformationShouldBeDeletedNotAnotherPages() {
+        List<String> fields2 = List.of("Employer Name", "Position", "City", "State", "Start Date","End Date");
+        List<WebElement> listOfFields = new EmploymentAndIncomePageArzu().getListOfFields2(fields2);
+        List<String> ListOfValues = new ArrayList<>();
+        for (int i = 0; i < fields2.size(); i++) {
+            ListOfValues.add(listOfFields.get(i).getAttribute("value"));
+
+        }
+
+        System.out.println(ListOfValues);
+        List<String> tempExpeted = new ArrayList<>();
+        if (ListOfValues.get(0) != null) {
+            Assert.fail();
+        }
+    }
+
+    @When("user clicks Remove button")
+    public void userClicksRemoveButton() {
+
+        new EmploymentAndIncomePageArzu().clickRemoveButton();
+    }
+
+    @Then("user clicks the yes new section must be deleted")
+    public void userClicksTheYesNewSectionMustBeDeleted() {
+
+        new EmploymentAndIncomePageArzu().clickyesButton2();
+        Assert.assertFalse(new EmploymentAndIncomePageArzu().getEmployer2().isDisplayed());
+    }
 }
