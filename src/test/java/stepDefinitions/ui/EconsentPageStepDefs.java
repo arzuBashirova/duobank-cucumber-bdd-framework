@@ -1,9 +1,9 @@
-package stepDefinitions.UI;
+package stepDefinitions.ui;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
 import pages.EconsentPage;
 import pages.ExpensesPage;
@@ -32,7 +32,7 @@ public class EconsentPageStepDefs {
         sign.clickNextButton();
     }
 
-    private static void extracted(@NotNull SignInPageNigar sign) {
+    private static void extracted( SignInPageNigar sign) {
         sign.employmentAndIncome();
     }
 
