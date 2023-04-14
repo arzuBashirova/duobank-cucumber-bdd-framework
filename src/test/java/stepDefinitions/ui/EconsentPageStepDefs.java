@@ -1,4 +1,4 @@
-package stepDefinitions.UI;
+package stepDefinitions.ui;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -27,14 +27,11 @@ public class EconsentPageStepDefs {
         sign.personalInfo();
         new ExpensesPage().fillMonthlyRentPayBox("2500");
         sign.clickNextButton();
-        extracted(sign);
+        sign.employmentAndIncome();
         sign.clickNextButton();
         sign.clickNextButton();
     }
 
-    private static void extracted(@NotNull SignInPageNigar sign) {
-        sign.employmentAndIncome();
-    }
 
     //Scenario 1
     @When("the user fills the form with random data  including first name, last name and email")
