@@ -27,11 +27,14 @@ public class EconsentPageStepDefs {
         sign.personalInfo();
         new ExpensesPage().fillMonthlyRentPayBox("2500");
         sign.clickNextButton();
-        sign.employmentAndIncome();
+        extracted(sign);
         sign.clickNextButton();
         sign.clickNextButton();
     }
 
+    private static void extracted( SignInPageNigar sign) {
+        sign.employmentAndIncome();
+    }
 
     //Scenario 1
     @When("the user fills the form with random data  including first name, last name and email")

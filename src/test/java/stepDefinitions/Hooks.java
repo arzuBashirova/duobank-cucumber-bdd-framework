@@ -6,6 +6,7 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utils.ConfigReader;
+import utils.DBUtils;
 import utils.Driver;
 
 import java.time.Duration;
@@ -36,12 +37,17 @@ public class Hooks {
         }
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Driver.getDriver().manage().window().maximize();
-
-
-
-
     }
 
+    @Before ("@DB") // runs before each scenario tagged with @DB
+    public void setUpScenarioForDbTests(){
+        DBUtils.createConnection();
+    }
+    //
+    @After ("@DB") // runs before each scenario tagged with @DB
+    public void tearDownScenarioForDbTests(){
+        DBUtils.close();
+    }
 
     @After()
     public void tearDownScenario(Scenario scenario){
