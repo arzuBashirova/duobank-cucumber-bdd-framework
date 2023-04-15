@@ -8,12 +8,12 @@ Feature: Econsent Page
   Filling out application
     Given the user is on the eConsent page
 
-  @first
+  @dilnoza1
   Scenario: User enters valid first name, last name and email address
     When the user fills the form with random data  including first name, last name and email
     Then the value boxes for first and last names should be filled
 
-  @second
+  @dilnoza2
   Scenario: User enters invalid first name, last name and email address
     When the user fills the form with random data  including first name, last name and email
     Then the value boxes for first and last names should be blank
