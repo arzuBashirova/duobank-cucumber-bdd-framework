@@ -7,20 +7,34 @@ Feature: As a user of Duobank Mortgage Application, I want to be able to sign up
     Then User enter firstName "<firstName>" , lastName "<lastName>" , email "<email>" , password "<password>" and enter
 
     Examples:
-      | firstName  | lastName  | email                   | password       |
-      | Johnny     | Deep      | johnnyde@gmail.com      | tsfhdifnf76bs  |
-      | johnnycash | candle    | johnnycash2@gmail.com   | kdgcfxzv54gh   |
-      | Quentin    | Tarantino | stevejobs48@gmail.com   | kjh243gbskiyfs |
-      | AL         | Pacino    | stevxsjhsej48@gmail.com | ssssssbskiyfs  |
-      | Marlon     | Brando    | kulpasanto48@gmail.com  | gabsf5sgsds    |
-      | fantomas   | tomatos   | sfantomastom8@gmail.com | kjh243gbskiyfs |
-      | kevin      | shein     | skevinshein@gmail.com   | kjh243gbskiyfs |
-      | katie      | levin     | katialevin@gmail.com    | ooopshd58dgdvv |
-      | sonic      | faster    | sonicvan23@gmail.com    | udygv77stv     |
-      | Willie     | Wonka     | choccolate@gmail.com    | hsgffff3444    |
+      | firstName | lastName  | email                     | password       |
+      | Johnny    | Deep      | johnnyde2@gmail.com       | tsfhdifnf76bs  |
+      | Gaby      | Candle    | johnnycash22@gmail.com    | kdgcfxzv54gh   |
+      | Quentin   | Tarantino | stevejobs482@gmail.com    | kjh243gbskiyfs |
+      | Marlon    | Brando    | kulpasanto482@gmail.com   | gabsf5sgsds    |
+      | Fantomas  | Somatos   | sfantomastom28@gmail.com  | kjh243gbskiyfs |
+      | Kevin     | Shein     | skevinshein2@gmail.com    | kjh243gbskiyfs |
+      | Katie     | Levin     | katialevin2@gmail.com     | ooopshd58dgdvv |
+      | Sonic     | Faster    | sonicvan232@gmail.com     | udygv77stv     |
+      | Willie    | Wonka     | choccolate2@gmail.com     | hsgffff3444    |
 
-    Scenario: verify database has last input
+
+    @temp
+    Scenario: verify if database handled it without slowing
+
     Then The database should be able to handle without slowing down  the system
+      | Johnny   |
+      | Gaby     |
+      | Quentin  |
+      | Marlon   |
+      | Fantomas |
+      | Kevin    |
+      | Katie    |
+      | Sonic    |
+      | Willie   |
+
+
+
 
       @checkColumnNames
     Scenario: The database should have "tbl_users" table
