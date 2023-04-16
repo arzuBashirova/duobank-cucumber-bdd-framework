@@ -88,6 +88,13 @@ public class EmpAndIncomePage {
     @FindBy(id = "incomesource3")
     private WebElement incomeSource3;
 
+    @FindBy(xpath = "//input[@type='checkbox'][@name='creditreport']")
+    private List<WebElement> checkboxesMohina;
+
+
+
+
+
 
 
 
