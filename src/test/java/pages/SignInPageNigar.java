@@ -51,7 +51,7 @@ public class SignInPageNigar {
         private WebElement realtor;
 
     public void insertRealtorInfo(){
-        realtor.sendKeys("Jane Doe");
+        realtor.sendKeys(new Faker().name().firstName());
     }
 
     @FindBy(name = "est_purchase_price")
@@ -78,6 +78,14 @@ public class SignInPageNigar {
     public void clickNextButton() {
 
         nextButton.click();
+    }
+
+    public void MortgageInfo(){
+       insertRealtorInfo();
+       addEstimatedPurchase();
+       addDownPayment();
+       addDownPaymentPercent();
+       clickNextButton();
     }
     @FindBy(xpath = "(//span[normalize-space()='Mortgage Application'])[1]")
     private WebElement mortgageButton;
@@ -154,6 +162,8 @@ public class SignInPageNigar {
         DOB.sendKeys("01/25/1978");
         nextButton.click();
     }
+
+
 }
 
 

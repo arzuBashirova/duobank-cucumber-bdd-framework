@@ -15,12 +15,12 @@ Scenario:User clicks Don't Agree button
   When user selects the Don't Agree button
   Then user should be directed back to the main application
 
-@Nigar
+@smoke @Nigar
 Scenario: User clicks Agree button
   When user selects Agree button
   Then user should proceed to next section
 
-@Nigar
+@Nigar @smoke
   Scenario: User doesn't select any button
     When user don't select any radio buttons
     Then user see an error message

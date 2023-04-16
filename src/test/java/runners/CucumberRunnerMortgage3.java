@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
             features = "src/test/resources",
             glue = "stepDefinitions",
             stepNotifications = true,
-//            dryRun = true,
+           //dryRun = true,
             plugin = {"html:target/basic-report/report.html"}
 
 

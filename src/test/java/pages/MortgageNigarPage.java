@@ -1,5 +1,6 @@
 package pages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -30,7 +31,34 @@ public class MortgageNigarPage {
 
     @FindBy(id = "select2-src_down_payment-sf-result-y4c9-Other type of Down Payment")
     private WebElement otherOptions;
+
+
+
+    @FindBy(id = "realtorinfo-error")
+    private WebElement fieldRequiredError;
+
+    public WebElement getFieldRequiredError() {
+        return fieldRequiredError;
+    }
+
     public WebElement getOtherOptions(){return  otherOptions;}
+
+
+
+    @FindBy(id = "additionalfunds")
+    public WebElement additonalFunds;
+
+    public WebElement getAdditonalFunds() {
+        return additonalFunds;
+    }
+
+    public void addInfoAdditionalFunds(){
+        additonalFunds.sendKeys("250000000");
+
+
+
+    }
+
 
 
 }

@@ -1,14 +1,9 @@
 package pages;
 
 import com.github.javafaker.Faker;
-import lombok.Data;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.w3c.dom.html.HTMLInputElement;
 import utils.Driver;
 
 

@@ -12,11 +12,11 @@ import java.time.Duration;
 
 public class Hooks {
     @Before()
-    public void setUpScenario(){
+    public void setUpScenario() {
         String environment = System.getProperty("env");
 
-        if(environment != null){
-            switch (environment){
+        if (environment != null) {
+            switch (environment) {
                 case "QA":
                     Driver.getDriver().get(ConfigReader.getProperty("QA"));
                     break;
@@ -30,15 +30,17 @@ public class Hooks {
                     throw new RuntimeException("Not a valid environment.");
 
             }
-        }else{
+        } else {
             Driver.getDriver().get(ConfigReader.getProperty("QA"));
             Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             Driver.getDriver().manage().window().maximize();
         }
-
-
-
     }
+
+
+
+
+
 
 
     @After()

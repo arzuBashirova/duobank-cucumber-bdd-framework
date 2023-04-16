@@ -14,17 +14,17 @@ Feature:As a potential homebuyer, I want to use the Preapproval Details page of 
         |Other type of Down Payment                      |
 
 
-@this
-      Scenario:The "Additional Funds Available" field should allow dollar amount
 
-        When user checks "Additional Funds Available field"
+      Scenario:The "Additional Funds Available" field should allow dollar amount
+        When user checks Additional Funds Available field"
         Then user should enter a dollar amount with up to two decimal
 
-#     Scenario: Click "Next" button
-#
-#       When user clicks "Next" button
-#       Then user should not proceed until all required fields are completed.
-##
-##       Scenario: Sucessful completion
-##         When user filled all the required fields
-##         Then user should be directed to "Personal Infomartion" page
+
+  Scenario: Click "Next" button
+    When user clicks Next button
+    Then user should not proceed until all required fields are completed.
+
+  @this
+       Scenario: Sucessful completion
+         When user filled all the required fields
+         Then user should be directed to Personal Infomartion page
