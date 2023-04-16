@@ -12,7 +12,7 @@ import utils.Driver;
 import java.time.Duration;
 
 public class Hooks {
-    @Before()
+    @Before("not @db_only")
     public void setUpScenario(){
         String environment = System.getProperty("env");
 
@@ -49,7 +49,7 @@ public class Hooks {
         DBUtils.close();
     }
 
-    @After()
+    @After("not @db_only")
     public void tearDownScenario(Scenario scenario){
         if(scenario.isFailed()){
             scenario.attach(((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES), "image/png", "screenshot");
