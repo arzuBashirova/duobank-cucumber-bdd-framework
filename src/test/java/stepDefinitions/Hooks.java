@@ -6,17 +6,18 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utils.ConfigReader;
+import utils.DBUtils;
 import utils.Driver;
 
 import java.time.Duration;
 
 public class Hooks {
     @Before()
-    public void setUpScenario() {
+    public void setUpScenario(){
         String environment = System.getProperty("env");
 
-        if (environment != null) {
-            switch (environment) {
+        if(environment != null){
+            switch (environment){
                 case "QA":
                     Driver.getDriver().get(ConfigReader.getProperty("QA"));
                     break;
@@ -30,18 +31,23 @@ public class Hooks {
                     throw new RuntimeException("Not a valid environment.");
 
             }
-        } else {
+        }else{
             Driver.getDriver().get(ConfigReader.getProperty("QA"));
-            Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            Driver.getDriver().manage().window().maximize();
+
         }
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        Driver.getDriver().manage().window().maximize();
     }
 
-
-
-
-
-
+    @Before ("@DB") // runs before each scenario tagged with @DB
+    public void setUpScenarioForDbTests(){
+        DBUtils.createConnection();
+    }
+    //
+    @After ("@DB") // runs before each scenario tagged with @DB
+    public void tearDownScenarioForDbTests(){
+        DBUtils.close();
+    }
 
     @After()
     public void tearDownScenario(Scenario scenario){
