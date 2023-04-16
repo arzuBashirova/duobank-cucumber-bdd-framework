@@ -21,8 +21,7 @@ public class EconsentPageStepDefs {
 
 
         SignInPageNigar sign = new SignInPageNigar();
-        sign.addEmail();
-        sign.addPassword();
+       sign.singIn();
         sign.singIn();
         sign.personalInfo();
         new ExpensesPage().fillMonthlyRentPayBox("2500");

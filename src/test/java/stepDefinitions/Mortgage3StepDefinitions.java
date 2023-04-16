@@ -16,12 +16,10 @@ public class Mortgage3StepDefinitions {
 
 
     @Given("The user is on the Preapproval Details page")
-    public void the_user_is_on_the_preapproval_details_page() {
+    public void the_user_is_on_the_preapproval_details_page(String button) {
         SignInPageNigar sign = new SignInPageNigar();
-        sign.addEmail();
-        sign.addPassword();
         sign.singIn();
-        sign.setMortgageApplicationButton();
+        sign.setMortgageApplicationButton(button);
 
     }
     @When("user click source of Down Payment dropdown field")

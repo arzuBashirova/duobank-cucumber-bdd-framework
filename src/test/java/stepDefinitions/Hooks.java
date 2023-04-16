@@ -32,7 +32,7 @@ public class Hooks {
 
             }
         }else{
-            Driver.getDriver().get(ConfigReader.getProperty("QA"));
+            Driver.getDriver().get(ConfigReader.getProperty("STAGING"));
 
         }
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));

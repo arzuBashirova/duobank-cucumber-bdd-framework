@@ -7,11 +7,11 @@ import org.junit.runner.RunWith;
 
     @RunWith(Cucumber.class)
     @CucumberOptions(
-            tags = "@Nigar",
-            features = "src/test/resources",
+            tags = "@DB",
+            features = "src/test/resources/DB",
             glue = "stepDefinitions",
             stepNotifications = true,
-           // dryRun = true,
+            //dryRun = true,
             plugin = {
                     "pretty",
                     "html:target/basic-report/report.html"}
@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 
 
     public class CucumberRunnerEconsent_N {
+
 
 
     }
