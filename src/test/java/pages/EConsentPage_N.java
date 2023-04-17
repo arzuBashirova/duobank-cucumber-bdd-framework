@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.ConfigReader;
 import utils.Driver;
 import utils.SeleniumUtils;
 
@@ -62,4 +63,31 @@ private WebElement fieldRequiredMessage;
         return fieldRequiredMessage;
     }
 
+    public void EconsentInfo(String name, String lastName){
+
+      firstName.sendKeys(name);
+      this.lastName.sendKeys(lastName);
+      email.sendKeys(ConfigReader.getProperty("email"));
+      agreeClick();
+      new SignInPageNigar().clickNextButton();
+    }
+
+    @FindBy(id = "eConsentdeclarer")
+    private WebElement econsentDeclarer;
+    public void EconsentInfoDB(String name, String lastName){
+        SeleniumUtils.jsClick(econsentDeclarer);
+        econsentDeclarer.sendKeys("Borrower");
+        firstName.sendKeys(name);
+        this.lastName.sendKeys(lastName);
+        email.sendKeys(ConfigReader.getProperty("email"));
+        agreeClick();
+        new SignInPageNigar().clickNextButton();
+    }
+
+    @FindBy(xpath = "//a[normalize-space()='Submit']")
+    private WebElement submitButton;
+
+    public void clickSubmit(){
+        submitButton.click();
+    }
 }

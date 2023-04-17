@@ -5,27 +5,23 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 
+
     @RunWith(Cucumber.class)
     @CucumberOptions(
-            tags = "@DB_now",
-            features = "src/test/resources/DB",
+         tags = "@this",
+            features = "src/test/resources",
             glue = "stepDefinitions",
             stepNotifications = true,
-            dryRun = true,
-            plugin = {
-                    "pretty",
-                    "html:target/basic-report/report.html"}
+           //dryRun = true,
+            plugin = {"html:target/basic-report/report.html"}
 
 
     )
 
-
-    public class CucumberRunnerEconsent_N {
+    public class CucumberRunnerMortgage3 {
 
 
 
     }
-
-
 
 

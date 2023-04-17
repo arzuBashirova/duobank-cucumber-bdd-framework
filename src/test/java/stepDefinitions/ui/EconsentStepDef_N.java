@@ -19,9 +19,7 @@ public class EconsentStepDef_N {
     @Given("The user is on the Econsent page")
     public void theUserIsOnTheEconsentPage() {
         SignInPageNigar sign = new SignInPageNigar();
-        sign.addEmail();
-        sign.addPassword();
-        sign.singIn();
+       sign.singIn();
         sign.personalInfo();
         new ExpensesPage().fillMonthlyRentPayBox("2500");
         sign.clickNextButton();

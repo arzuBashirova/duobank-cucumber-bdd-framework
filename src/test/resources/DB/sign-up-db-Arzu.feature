@@ -1,4 +1,4 @@
-@DB
+
 Feature: As a user of Duobank Mortgage Application, I want to be able to sign up and log in securely using a  database
   system that protects my personal and financial information, so that I can complete the  mortgage application process with confidence.
 
