@@ -4,6 +4,7 @@ import com.beust.jcommander.internal.Maps;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import pages.SignUpPageDB_Arzu;
 import utils.DBUtils;
@@ -136,5 +137,44 @@ public class signUpDbStepDef_Arzu {
         DBUtils.executeUpdate("Delete from tbl_user where first_name='"+first+"';");
     }
     }
+    @When("user enters following credentials to sign up fields")
+    public void user_enters_following_credentials_to_sign_up_fields(List<Map<String,String>> dataTable) {
 
-}
+        Map<String, String> data = dataTable.get(0);
+        new SignUpPageDB_Arzu().SIGNUP(data.get("first_name"),
+                                       data.get("last_name"),
+                                       data.get("email"),
+                                       data.get("password"));
+    }
+    @Then("database should have corresponding column names and data")
+    public void database_should_have_corresponding_column_names_and_data(List<Map<String,String>> dataTable) throws SQLException {
+
+        String expFirstN=null;
+        try{
+            expFirstN = dataTable.get(0).get("first_name");
+            String expLast = dataTable.get(0).get("last_name");
+            String expEmail = dataTable.get(0).get("email");
+            String expPass = dataTable.get(0).get("password");
+
+            List<Map<String, Object>> actual = DBUtils.getListOfMaps("SELECT * from tbl_user where first_name='" + expFirstN + "'");
+
+            String actFirstN = (String)(actual.get(0).get("first_name"));
+            String  actLast = (String)(actual.get(0).get("last_name"));
+            String  actEmail = (String)(actual.get(0).get("email"));
+            String  actPass = (String)(actual.get(0).get("password"));
+
+            SoftAssertions softAssertions = new SoftAssertions();
+
+            softAssertions.assertThat(actFirstN).isEqualTo(expFirstN);
+            softAssertions.assertThat(actLast).isEqualTo(expLast);
+            softAssertions.assertThat(actEmail).isEqualTo(expEmail);
+            softAssertions.assertThat(actPass).isEqualTo(DigestUtils.md5Hex(expPass));
+
+            softAssertions.assertAll();
+        }finally{
+            DBUtils.executeUpdate("DELETE FROM tbl_user where first_name='"+expFirstN+"'");
+        }
+    }
+    }
+
+
