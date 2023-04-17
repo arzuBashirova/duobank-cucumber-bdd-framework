@@ -25,9 +25,9 @@ public class PersonalInfoStepDefs_DB_N {
 
     @When("user logins to the website")
     public void user_logins_to_the_website() {
-//     new SignUpPageDB_Arzu().SIGNUP("Jacky", "Kennedy", ConfigReader.getProperty("email"),
-//             ConfigReader.getProperty("password"));
-//        SeleniumUtils.waitFor(5);
+     new SignUpPageDB_Arzu().SIGNUP("Michael", "Jackson", ConfigReader.getProperty("email"),
+             ConfigReader.getProperty("password"));
+        SeleniumUtils.waitFor(5);
            new SignInPageNigar().singIn();
 
 
@@ -72,9 +72,23 @@ public class PersonalInfoStepDefs_DB_N {
         List<List<Object>> resultDbCob = DBUtils.getListOfLists("select c_firstName from tbl_mortagage where c_firstName = '" + expectedCoborrowerName + " '");
         System.out.println("Coborrower name is " + resultDbCob);
         Assert.assertEquals(expectedBorrowerName, resultDB.get(0).get(0));
-        //Assert.assertEquals(expectedCoborrowerName,resultDbCob.get(0).get(0));
+
+        List<Map<String, Object>> result = DBUtils.getListOfMaps("select b_email from tbl_mortagage where b_email='"+ConfigReader.getProperty("email")+"'");
+        System.out.println(result);
+        Assert.assertEquals(borroweLastName, result.get(0).get("b_lastName"));
 
     }
+
+
+    @When("users added personal information")
+    public void users_added_personal_information() {
+
+    }
+    @Then("database should have columns")
+    public void database_should_have_columns(io.cucumber.datatable.DataTable dataTable) {
+
+    }
+
 
 
 }
