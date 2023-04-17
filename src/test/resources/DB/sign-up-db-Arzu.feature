@@ -53,3 +53,41 @@ Feature: As a user of Duobank Mortgage Application, I want to be able to sign up
        | country_id  |
        | active      |
        | id          |
+
+        @db_only
+        Scenario: The database should ensure that each user has a unique username associated  with their account.
+          When  I send a request to retrieve duplicate usernames
+          Then  The result should be empty
+
+        @db_only
+        Scenario: The database should ensure that each user has a unique email address associated  with their account.
+          When  I send a request to retrieve duplicate emails
+          Then  The result should be empty right away
+
+        @db_only
+        Scenario: The "tbl_users" table should store a timestamp of when the user account was created.
+          When I send a request to retrieve created_at column
+          Then result should not be null
+
+
+         Scenario: The database should store and encrypt user passwords in an MD5 hash.
+          When user enters following credentials to sign up
+            | John              |
+            | Doe               |
+            | JohnDoe@gmail.com |
+            | johndoetester123  |
+           When I send a request to retrieve the password data from database
+           Then the data must be encrypted version
+
+              @dt
+            Scenario: Upon successful submission of the sign up information,the "Sign Up" page form fields should be
+            mapped to their corresponding columns in the “tbl_users” table in the database
+              When user enters following credentials to sign up fields
+                | first_name | last_name | email                 | password      |
+                | Sheldon    | Cooper    | sheldoncoop@gmail.com | sheldoncoo123 |
+              Then database should have corresponding column names and data
+                | first_name | last_name | email                 | password      |
+                | Sheldon    | Cooper    | sheldoncoop@gmail.com | sheldoncoo123 |
+
+
+
