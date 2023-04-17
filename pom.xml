@@ -71,6 +71,13 @@
         <version>8.0.32</version>
     </dependency>
 
+    <!--        to use FileUtils class -->
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.11.0</version>
+    </dependency>
+
 
     <!--        For DigestUtils class -->
     <dependency>
