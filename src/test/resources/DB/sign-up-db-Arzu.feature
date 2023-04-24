@@ -36,7 +36,7 @@ Feature: As a user of Duobank Mortgage Application, I want to be able to sign up
 
 
 
-      @checkColumnNames
+      @smoke
     Scenario: The database should have "tbl_users" table
      Then  DB should contain the following columns
        | email       |
@@ -70,6 +70,7 @@ Feature: As a user of Duobank Mortgage Application, I want to be able to sign up
           Then result should not be null
 
 
+          @smoke
          Scenario: The database should store and encrypt user passwords in an MD5 hash.
           When user enters following credentials to sign up
             | John              |
@@ -79,7 +80,7 @@ Feature: As a user of Duobank Mortgage Application, I want to be able to sign up
            When I send a request to retrieve the password data from database
            Then the data must be encrypted version
 
-              @dt
+              @dt @smoke
             Scenario: Upon successful submission of the sign up information,the "Sign Up" page form fields should be
             mapped to their corresponding columns in the “tbl_users” table in the database
               When user enters following credentials to sign up fields
