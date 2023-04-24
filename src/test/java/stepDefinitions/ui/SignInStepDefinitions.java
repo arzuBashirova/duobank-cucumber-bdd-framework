@@ -157,7 +157,7 @@ public class SignInStepDefinitions {//sign in definitions
 
     @Then("the user navigates to the mortgage account dashboard")
     public void theUserNavigatesToTheMortgageAccountDashboard() {
-        Assert.assertEquals("http://qa-duobank.us-east-2.elasticbeanstalk.com/dashboard.php",Driver.getDriver().getCurrentUrl());
+        Assert.assertEquals("http://staging-duobank.us-east-2.elasticbeanstalk.com/dashboard.php",Driver.getDriver().getCurrentUrl());
     }
 
     @When("the user enters incorrect credentials")

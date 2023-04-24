@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)//sign In runner
 @CucumberOptions(
-        tags = "@positiveRent",
+        tags = "@smoke",
         features = "src/test/resources",
         glue = "stepDefinitions",
         stepNotifications = true,
