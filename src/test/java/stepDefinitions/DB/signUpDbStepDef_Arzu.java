@@ -30,16 +30,18 @@ public class signUpDbStepDef_Arzu {
     public void the_database_should_be_able_to_handle_without_slowing_down_the_system(List<String> expectedList) throws SQLException {
 
 
+
         try {
 
         List<String> expectedList2= new ArrayList<>(expectedList);
         System.out.println("expected"+expectedList2);
 
 
-        List<Map<String, Object>> actualList = DBUtils.getListOfMaps("Select first_name FROM tbl_user WHERE first_name BETWEEN 'Bruce' AND 'Willie' ORDER BY first_name;");
+        List<Map<String, Object>> actualList = DBUtils.getListOfMaps("Select first_name FROM tbl_user WHERE first_name BETWEEN 'Johnny' AND 'Willie' ORDER BY first_name;");
 
 
             System.out.println("actual list : "+actualList);
+
         List<String>actualList2=new ArrayList<>();
             for (int i = 0; i < actualList.size(); i++) {
                 actualList2.add((String) (actualList.get(i).get("first_name")));}
@@ -47,10 +49,10 @@ public class signUpDbStepDef_Arzu {
 
             Collections.sort(expectedList2);
             Collections.sort(actualList2);
-            Assert.assertEquals(expectedList2,actualList2);
+            Assert.assertEquals(expectedList2,actualList2 );
 
         }finally {
-             DBUtils.executeUpdate("Delete from tbl_user where first_name between 'Bruce1' and 'Willie1' order by first_name;");
+             DBUtils.executeUpdate("Delete from tbl_user where first_name between 'Johnny' and 'Willie' order by first_name;");
         }
     }
 

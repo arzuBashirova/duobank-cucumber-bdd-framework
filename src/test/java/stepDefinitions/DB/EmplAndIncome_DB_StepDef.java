@@ -6,8 +6,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import org.assertj.core.api.SoftAssertions;
-import org.jetbrains.annotations.NotNull;
-import org.testng.Assert;
+//import org.jetbrains.annotations.NotNull;
+//import org.testng.Assert;
+import org.junit.Assert;
 import utils.DBUtils;
 import pages.EmplAndIncome_Page_DB;
 
@@ -46,7 +47,7 @@ public class EmplAndIncome_DB_StepDef {
     }
 
     @Then("Database should have the entered by user information mapped accordingly")
-    public void database_should_have_the_entered_by_user_information_mapped_accordingly(@NotNull List<Map<String, String>> dataTable) throws
+    public void database_should_have_the_entered_by_user_information_mapped_accordingly( List<Map<String, String>> dataTable) throws
             SQLException {
 
         try {
