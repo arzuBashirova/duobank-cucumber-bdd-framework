@@ -64,7 +64,7 @@ Feature: As a user of Duobank Mortgage Application, I want to be able to sign up
           When  I send a request to retrieve duplicate emails
           Then  The result should be empty right away
 
-        @db_onlyArzu
+        @db_only @RegressionAzi
         Scenario: The "tbl_users" table should store a timestamp of when the user account was created.
           When I send a request to retrieve created_at column
           Then result should not be null
