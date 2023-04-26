@@ -77,7 +77,12 @@ public class SignInPage {
         password.sendKeys(ConfigReader.getProperty("password"));
         clickOnSignInButton();
 
+    }
+    public void signINWithJS(){
 
+        email.sendKeys(ConfigReader.getProperty("email"));
+        password.sendKeys(ConfigReader.getProperty("password"));
+        SeleniumUtils.jsClick(SignInButton);
 
     }
 

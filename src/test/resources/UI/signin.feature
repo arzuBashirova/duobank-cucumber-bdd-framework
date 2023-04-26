@@ -39,7 +39,7 @@ Feature: As a user, I want to be able to sign in to my mortgage account, so that
     When the user doesn't fill fields
     Then the sign in button should be disabled
 
-  @signIn @smoke
+  @signIn
   Scenario: Upon clicking the sign in button, the application should verify the user's credentials and if they are correct, redirect the user to the mortgage account dashboard.
     When the user enters correct credentials
     Then the user navigates to the mortgage account dashboard
@@ -55,6 +55,10 @@ Feature: As a user, I want to be able to sign in to my mortgage account, so that
     And the sign in page should have a "Don't have an account?" text
     Then the sign in page should have a "Sign up" link
 
+    @Jenkins @smoke
+  Scenario: User enters valid credentials and sign in
+  When the user sign in validly
+  Then user should be navigated to the home page
 
 #sign in feature
 

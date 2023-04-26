@@ -201,5 +201,16 @@ public class SignInStepDefinitions {//sign in definitions
 
     }
 
+    @When("the user sign in validly")
+    public void theUserSignInValidly() {
+
+        new SignInPage().signINWithJS();
+    }
+
+    @Then("user should be navigated to the home page")
+    public void userShouldBeNavigatedToTheHomePage() {
+
+        Assert.assertEquals(Driver.getDriver().getCurrentUrl(),"http://qa-duobank.us-east-2.elasticbeanstalk.com/dashboard.php");
+    }
 }
 
