@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.w3c.dom.html.HTMLInputElement;
 import utils.ConfigReader;
 import utils.Driver;
 import utils.SeleniumUtils;
@@ -15,31 +14,32 @@ import java.util.Random;
 
 public class SignInPageNigar {
 
-    public SignInPageNigar(){
+    public SignInPageNigar() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
 
-
-    @FindBy(name ="email")
+    @FindBy(name = "email")
     private WebElement emailAddress;
 
     @FindBy(id = "password")
     private WebElement password;
-       @FindBy(id = "signin")
+    @FindBy(id = "signin")
     private WebElement SingInButton;
 
 
-    public void singIn(){
+    public void singIn() {
         emailAddress.sendKeys(ConfigReader.getProperty("email"));
-         password.sendKeys(ConfigReader.getProperty("password"));
-                SingInButton.click();
+        password.sendKeys(ConfigReader.getProperty("password"));
+        SingInButton.click();
     }
-    public void setMortgageApplicationButton(String mortgageApplicationButton){
+
+    public void setMortgageApplicationButton(String mortgageApplicationButton) {
         this.mortgageApplicationButton.click();
     }
-    public void MortgageInfo(){
-       realtor.sendKeys(new Faker().name().firstName());
+
+    public void MortgageInfo() {
+        realtor.sendKeys(new Faker().name().firstName());
         price.sendKeys("270000");
         downPayment.sendKeys("2000");
         downPaymentPercent.sendKeys("2");
@@ -49,26 +49,26 @@ public class SignInPageNigar {
     @FindBy(xpath = "(//span[normalize-space()='Mortgage Application'])[1]")
     private WebElement mortgageApplicationButton;
 
-       @FindBy( id = "realtorinfo")
-        private WebElement realtor;
+    @FindBy(id = "realtorinfo")
+    private WebElement realtor;
 
-        @FindBy(name = "est_purchase_price")
+    @FindBy(name = "est_purchase_price")
     private WebElement price;
 
-      @FindBy(id = "downpayment")
+    @FindBy(id = "downpayment")
     private WebElement downPayment;
 
-        @FindBy(name = "down_payment_percent")
+    @FindBy(name = "down_payment_percent")
     private WebElement downPaymentPercent;
 
 
-@FindBy(xpath = "//a[@class = 'btn btn-light-primary'][.='Next']")
+    @FindBy(xpath = "//a[@class = 'btn btn-light-primary'][.='Next']")
     private WebElement nextButton;
+
     public void clickNextButton() {
 
         nextButton.click();
     }
-
 
 
     @FindBy(id = "realtorinfo")
@@ -87,7 +87,7 @@ public class SignInPageNigar {
     @FindBy(id = "b_ssn")
     private WebElement ssn;
     @FindBy(id = "select2-b_marital-container")
-    private  WebElement maritalStatus;
+    private WebElement maritalStatus;
     @FindBy(xpath = "//input[@class='select2-search__field']")
     private WebElement searchBar;
     @FindBy(id = "b_cell")
@@ -99,49 +99,47 @@ public class SignInPageNigar {
     private WebElement DOB;
 
 
-
-
-   public void employmentAndIncome(){
+    public void employmentAndIncome() {
         employerName.sendKeys(new Faker().job().field());
         position.sendKeys(new Faker().job().position());
         city.sendKeys(new Faker().address().cityName());
-       new Select(state).selectByVisibleText("Iowa");
-       startDate.sendKeys("04/03/2020");
-       grossMontlyIncome.sendKeys("30000");
+        new Select(state).selectByVisibleText("Iowa");
+        startDate.sendKeys("04/03/2020");
+        grossMontlyIncome.sendKeys("30000");
 
     }
+
     @FindBy(xpath = "//label[@for='coborrower1']")
 
     private WebElement coborrower;
 
 
-   @FindBy(id = "c_firstName")
-   private WebElement coborrowerFirstName;
+    @FindBy(id = "c_firstName")
+    private WebElement coborrowerFirstName;
 
-   @FindBy(id = "c_lastName")
-   private WebElement coborrowerLastName;
-   @FindBy(id = "c_email")
-   private WebElement coborrowerEmail;
-   @FindBy(id = "c_dob")
-   private WebElement coborrowerDOB;
-   @FindBy(id = "ssn")
-   private WebElement coborrowerSNN;
+    @FindBy(id = "c_lastName")
+    private WebElement coborrowerLastName;
+    @FindBy(id = "c_email")
+    private WebElement coborrowerEmail;
+    @FindBy(id = "c_dob")
+    private WebElement coborrowerDOB;
+    @FindBy(id = "ssn")
+    private WebElement coborrowerSNN;
 
-   @FindBy(xpath = "(//span[@class = 'select2-selection__arrow'])[6]")
-   private WebElement coborrowerMaritialstatus;
+    @FindBy(xpath = "(//span[@class = 'select2-selection__arrow'])[6]")
+    private WebElement coborrowerMaritialstatus;
 
-   @FindBy(xpath = "//input[@role='textbox']")
-   private WebElement coborrowerSearchBox;
+    @FindBy(xpath = "//input[@role='textbox']")
+    private WebElement coborrowerSearchBox;
 
-   @FindBy(id = "c_cell")
-   private WebElement CoborrowerCell;
+    @FindBy(id = "c_cell")
+    private WebElement CoborrowerCell;
 
 
-
-    public void personalInfoDB(String name, String lastName, String name2, String lastName2, String email2){
+    public void personalInfoDB(String name, String lastName, String name2, String lastName2, String email2) {
         SeleniumUtils.jsClick(coborrower);
         Faker faker = new Faker();
-       // Random random =  new Random();
+        // Random random =  new Random();
 //        mortgageButton.click();
 //        realtorInfo.sendKeys(faker.name().username());
 //        int housePrice = random.nextInt(500001) + 500000;
@@ -176,10 +174,46 @@ public class SignInPageNigar {
 
     }
 
-    public void personalInfo(){
+    public void personalInfoCOB(String name, String lastName, String name2, String lastName2, String email2) {
+        SeleniumUtils.jsClick(coborrower);
         Faker faker = new Faker();
-        Random random =  new Random();
-       mortgageApplicationButton.click();
+
+        firstName.sendKeys(name);
+        this.lastName.sendKeys(lastName);
+        b_email.sendKeys(ConfigReader.getProperty("email"));
+        ssn.sendKeys(faker.numerify("#########"));
+        maritalStatus.click();
+        searchBar.sendKeys("Married", Keys.ENTER);
+        phoneNumber.sendKeys(faker.phoneNumber().cellPhone());
+        homeNumber.sendKeys(faker.phoneNumber().cellPhone());
+        nextButton.click();
+        DOB.sendKeys("01/25/1978");
+      coborrowerInfoDB("Coco","Chanel","chanel@gmail.com","06/28/1989", "123-45-8796");
+        clickNextButton();
+
+
+    }
+    public void coborrowerInfoDB(String firstC, String lastC, String email, String dob, String ssn) {
+        SeleniumUtils.jsClick(coborrower);
+        Faker faker = new Faker();
+        coborrowerFirstName.sendKeys(firstC);
+        coborrowerLastName.sendKeys(lastC);
+        coborrowerEmail.sendKeys(email);
+        coborrowerDOB.sendKeys("05/13/1975");
+        coborrowerSNN.sendKeys(faker.numerify("#########"));
+
+        coborrowerMaritialstatus.click();
+        coborrowerSearchBox.sendKeys("Single", Keys.ENTER);
+
+        CoborrowerCell.sendKeys(faker.phoneNumber().cellPhone());
+        clickNextButton();
+
+    }
+
+    public void personalInfo() {
+        Faker faker = new Faker();
+        Random random = new Random();
+        mortgageApplicationButton.click();
         realtorInfo.sendKeys(faker.name().username());
         int housePrice = random.nextInt(500001) + 500000;
         purchasePrice.sendKeys(String.valueOf(housePrice));
@@ -229,29 +263,29 @@ public class SignInPageNigar {
     private WebElement startDate;
     @FindBy(id = "grossmonthlyincome")
     private WebElement grossMontlyIncome;
-    public void employmentAndIncomeDB(){
+
+    public void employmentAndIncomeDB() {
         Faker faker = new Faker();
         employerName.sendKeys(faker.job().field());
         position.sendKeys(faker.job().position());
         city.sendKeys(faker.address().cityName());
-       state.click();
-       state.sendKeys(faker.address().state());
+        state.click();
+        state.sendKeys(faker.address().state());
         startDate.sendKeys("04/03/2020");
         grossMontlyIncome.sendKeys("30000");
         cobEmployer.sendKeys(faker.job().field());
         cobPosition.sendKeys(faker.job().position());
         cobCity.sendKeys(faker.address().city());
-      cobState.click();
-      cobState.sendKeys(faker.address().state());
+        cobState.click();
+        cobState.sendKeys(faker.address().state());
         cobStartDate.sendKeys("05/02/2014");
         cobGrosMontlyIncome.sendKeys("450000");
         SeleniumUtils.jsClick(nextButton);
 
 
-
-
     }
 }
+
 
 
 

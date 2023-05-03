@@ -49,12 +49,12 @@ public class Hooks {
         DBUtils.close();
     }
 
-    @After("not @db_only")
-    public void tearDownScenario(Scenario scenario){
-        if(scenario.isFailed()){
-            scenario.attach(((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES), "image/png", "screenshot");
-        }
-
-        Driver.quitDriver();
-    }
+//    @After("not @db_only")
+//    public void tearDownScenario(Scenario scenario){
+//        if(scenario.isFailed()){
+//            scenario.attach(((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES), "image/png", "screenshot");
+//        }
+//
+//        Driver.quitDriver();
+//    }
 }
