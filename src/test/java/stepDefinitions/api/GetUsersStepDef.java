@@ -5,12 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import utils.ApiUtils;
 import utils.ConfigReader;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class retriveUsersStepDef {
+public class GetUsersStepDef {
 
 
     RequestSpecification requestSpecification;
@@ -58,4 +59,20 @@ public class retriveUsersStepDef {
         response.then().
                 statusCode(equalTo(statusCode2));
     }
+
+
+    @Given("the request made with valid API key")
+    public void the_request_made_with_valid_api_key() {
+        ApiUtils.prepareAPI();
+       ApiUtils.setRequestQueryParameter("api_key", ConfigReader.getProperty("api_key"));
+    }
+    @When("I send a {string} request to the end point {string} to get the all users data")
+    public void i_send_a_request_to_the_end_point_to_get_the_all_users_data(String method, String endPoint) {
+        ApiUtils.sendRequest(method,endPoint);
+    }
+    @Then("the {string} header is set to {string}")
+    public void and_the_header_is_set_to(String header, String value) {
+        ApiUtils.verifyResponseHeader(header, value);
+    }
+
 }
