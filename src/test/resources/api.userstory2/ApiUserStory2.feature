@@ -1,7 +1,7 @@
 Feature:  GET /user As a user of the mortgage application,
   I want to be able to retrieve a specific user's information by ID through an API endpoint.
 
-@get_user1
+  @get_user1
   Scenario: Retrieve user information by valid ID
     Given I have a valid API key
     When I send a GET request to "/user" with a valid user ID as a query parameter
@@ -17,7 +17,7 @@ Feature:  GET /user As a user of the mortgage application,
       | type      | [user type]       |
       | active    | [user active status] |
 
-@get_user2
+  @get_user2
 
   Scenario: Retrieve user information with invalid or missing ID
     Given I have a valid API key

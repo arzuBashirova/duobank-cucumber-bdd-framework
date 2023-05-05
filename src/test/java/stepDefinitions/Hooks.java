@@ -4,6 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.restassured.RestAssured;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utils.ConfigReader;
@@ -55,7 +56,7 @@ public class Hooks {
         RestAssured.baseURI = ConfigReader.getProperty("api_base_uri");
     }
     @After("not @db_only and not @api")
-    public void tearDownScenario(Scenario scenario){
+    public void tearDownScenario(@NotNull Scenario scenario){
         if(scenario.isFailed()){
             scenario.attach(((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES), "image/png", "screenshot");
         }
