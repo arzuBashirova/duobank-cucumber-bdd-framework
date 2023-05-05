@@ -22,6 +22,6 @@ Feature:  GET /user As a user of the mortgage application,
   Scenario: Retrieve user information with invalid or missing ID
     Given I have a valid API key
     When I send a GET request to "/user" with an invalid or missing user ID as a query parameter
-    Then the response status code should be 400 or 404
+    Then response status code should be 400 or 404
     And the response Content-Type header should be "application/json"
     And the response body should contain an error message

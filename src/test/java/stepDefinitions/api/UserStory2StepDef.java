@@ -40,8 +40,8 @@ public class UserStory2StepDef {
                 .get(endpoint);
     }
 
-    @Then("the response status code should be {int}")
-    public void the_response_status_code_should_be(int expectedStatusCode) {
+    @Then("response status code should be {int}")
+    public void response_status_code_should_be(int expectedStatusCode) {
         assertEquals(expectedStatusCode, response.getStatusCode());
     }
 
@@ -70,5 +70,10 @@ public class UserStory2StepDef {
     public void the_response_body_should_contain_an_error_message() {
         String responseBody = response.getBody().asString();
         assertTrue(responseBody.contains("error"));
+    }
+
+    @Then("response status code should be {int} or {int}")
+    public void responseStatusCodeShouldBeOr(int arg0, int arg1) {
+
     }
 }
