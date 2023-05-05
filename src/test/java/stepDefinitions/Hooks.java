@@ -7,6 +7,7 @@ import io.restassured.RestAssured;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import utils.ApiUtils;
 import utils.ConfigReader;
 import utils.DBUtils;
 import utils.Driver;
@@ -51,9 +52,18 @@ public class Hooks {
         DBUtils.close();
     }
 
-    @Before ("@api") // runs before each scenario tagged with @UI
+    @Before ("@api")
     public void setUpScenarioForApiTests(){
-        RestAssured.baseURI = ConfigReader.getProperty("api_base_uri");
+        ApiUtils.prepareAPI();
+    }
+
+
+    @After ("@api")
+    public void tearDownScenarioForApiTests(Scenario scenario){
+
+        if(scenario.isFailed()){
+            scenario.attach( ApiUtils.getResponse().asPrettyString(), "text/plain", "responseBody");
+        }
     }
     @After("not @db_only and not @api")
     public void tearDownScenario(@NotNull Scenario scenario){
